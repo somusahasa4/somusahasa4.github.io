@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>API POST</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+  </head>
+  <body style="" class="">
+<h1 onclick="processApi();">API test page</h1>
+<form>
+<input type="hidden" id='skey' name="skey" value="">
+</form>
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $('#skey').value= document.controller.getValue('/ctx/vars/@key');
+});
+
+function processApi(){
+        var url = 'https://ac383ap.adobesandbox.com/nl/jsp/soaprouter.jsp';
+        var body = '<?xml version="1.0" encoding="utf-8"?>'+
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xtk:session"><soapenv:Header/><soapenv:Body><urn:Write><urn:sessiontoken>___d221e596-df13-4d4d-89b6-1dc4b278156b</urn:sessiontoken><urn:domDoc xsi:type="ns:Element">xtk.session.Write(<pushNotificationTokens _operation="insert" topic="11" tokenId="11" xtkschema="cus:pushNotificationTokens" />)</urn:domDoc></urn:Write></soapenv:Body></soapenv:Envelope>';
+                $.support.cors = true;
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    crossDomain: true,
+                    data: body,
+                    dataType: 'xml',
+                    headers: {
+                        'Content-Type':'text/xml; charset=utf-8',
+                        'SOAPAction':'xtk:persist#Write'
+                    },
+                    success: function (result) {
+                        console.log('success ' + result);
+                    },
+                    error: function (jqXHR, tranStatus, errorThrown) {
+                        console.log(
+                            //'Status: ' + jqXHR.status + ' ' + jqXHR.statusText + '. ' +
+                            'Response: ' + jqXHR.responseText
+                        );
+                    }
+                });
+
+      }
+</script>
+</body>
+</html>
