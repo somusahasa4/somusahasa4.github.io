@@ -253,7 +253,7 @@
             welcome.classList.remove('isPaused');
           }
         };
-        navigator.serviceWorker.register('../../res/neodemo/firebase-messaging-sw.js')
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
           .then((registration) => {
             messaging.useServiceWorker(registration);
             // Request permission and get token.....
