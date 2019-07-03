@@ -345,7 +345,7 @@
               var url = 'https://ac383ap.adobesandbox.com/nl/jsp/soaprouter.jsp';
               var body = '<?xml version="1.0" encoding="utf-8"?>'+
               '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xtk:session"><soapenv:Header/><soapenv:Body><urn:Write><urn:sessiontoken>'+document.controller.getValue('/ctx/vars/@key')+'</urn:sessiontoken><urn:domDoc xsi:type="ns:Element">xtk.session.Write(<pushNotificationTokens _operation="insert" topic="'+topicForPWA+'" tokenId="'+ currentToken+'" xtkschema="cus:pushNotificationTokens" />)</urn:domDoc></urn:Write></soapenv:Body></soapenv:Envelope>';
-                      $.support.cors = true;
+                      /*$.support.cors = true;
                       $.ajax({
                           url: url,
                           type: 'POST',
@@ -365,7 +365,7 @@
                                   'Response: ' + jqXHR.responseText
                               );
                           }
-                      });
+                      });*/
 
 
 
